@@ -1,0 +1,12 @@
+extends: ../paper_ieee33_v2.yaml
+environment_version: residential-grid-morl-v4.0.0-battery-renewable
+network:
+  load_scale: 0.85
+  pv_scale: 1.00
+  pv_capacity_ratio_to_base_load: 0.45
+five_objective:
+  mode: battery_renewable
+  pv_curtailment_control: true
+  separate_bess_degradation: true
+  bess_efc_weight: 0.50
+  ev_efc_weight: 0.50

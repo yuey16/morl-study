@@ -1,0 +1,58 @@
+simulation:
+  dt_minutes: 15
+  episode_days: 1
+  episode_start_hour: 12
+  forecast_horizon_steps: 4
+  forecast_mode: perfect_short_horizon
+  forecast_noise_std_fraction: 0.05
+  split: train
+network:
+  name: ieee33
+  v_min: 0.95
+  v_max: 1.05
+  load_scale: 1.30
+  pv_scale: 1.0
+  ev_scale: 1.50
+  pv_capacity_ratio_to_base_load: 0.70
+profiles:
+  households_per_load: 3
+bess:
+  buses: [7, 11, 15, 30]
+  capacity_kwh: 50.0
+  p_max_kw: 10.0
+  soc_min: 0.10
+  soc_max: 0.90
+  eta_charge: 0.95
+  eta_discharge: 0.95
+  initial_soc_low: 0.35
+  initial_soc_high: 0.65
+  terminal_soc_penalty_aud_per_fraction: 0.0
+ev:
+  buses: [8, 12, 18, 25, 31]
+  equivalent_vehicles_per_group: 10.0
+  capacity_kwh_per_vehicle: 60.0
+  charger_kw_per_vehicle: 7.0
+  target_soc: 0.80
+  soc_min: 0.10
+  soc_max: 0.90
+  eta_charge: 0.95
+  eta_discharge: 0.95
+  v2g_enabled: true
+  hard_departure_reserve: false
+  departure_success_fraction: 0.95
+price:
+  source: aemo_vic1_2019
+  mode: transformed_dynamic
+  scale: 1.0
+  feed_in_ratio: 0.20
+reward:
+  voltage_alpha: 0.30
+  ev_urgency_beta: 0.05
+  pf_failure_voltage_cost: 10.0
+randomization:
+  random_household_assignment: true
+  load_scale_noise: 0.0
+  pv_scale_noise: 0.0
+logging:
+  enabled: false
+  output_dir: artifacts/trajectories

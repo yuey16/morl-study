@@ -1,0 +1,9 @@
+extends: ieee33_balanced.yaml
+environment_version: residential-grid-morl-v4.0.0-battery-renewable-pv-rich
+network:
+  load_scale: 0.80
+  pv_scale: 1.05
+  pv_capacity_ratio_to_base_load: 0.65
+bess:
+  initial_soc_low: 0.15
+  initial_soc_high: 0.30

@@ -1,0 +1,19 @@
+extends: base.yaml
+environment_version: residential-grid-morl-v1.0.0
+network:
+  name: ieee33
+  v_min: 0.95
+  v_max: 1.05
+  load_scale: 1.15
+  pv_scale: 2.00
+  ev_scale: 1.25
+  pv_capacity_ratio_to_base_load: 0.70
+bess:
+  buses: [7, 11, 15, 30]
+  capacity_kwh: 100.0
+  p_max_kw: 20.0
+ev:
+  buses: [8, 12, 18, 25, 31]
+  equivalent_vehicles_per_group: 10.0
+price:
+  scale: 1.0

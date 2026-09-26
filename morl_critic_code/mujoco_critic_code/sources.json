@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/adamstafa/momba",
+  "commit": "1f2abea402259393392e2c57f46e73c9f8f10fc9",
+  "files": {
+    "architectures/simba_v2.py": "2823580093491ff5ed6726d8052475cb33e5677151ae479fa6b32821c7c51ead",
+    "momba/agent.py": "3c76340af100e533d7acb36902f159729f264ba6e015aa9e2105c37b76991dbd",
+    "momba/normalization.py": "7ed73a8de876fbd345c4e5ae01876d3273faf1533b518304038f6e3ae63cc9df",
+    "momba/net_builder.py": "87af40669589559202a0b05875f835d50f9374bcae53df8d8e68ab36b264d217",
+    "momba/preference_sampling.py": "03942febf43fb12ae846a7c69cda59ac1077ce96ee8a010bbb974fd237ecaeae",
+    "architectures/mlp.py": "ad5f40b70b4b7c38d2ea7c8936653d0748b4f72a71b3b56478fa88a027c32a50"
+  }
+}

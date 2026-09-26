@@ -1,0 +1,12 @@
+torch>=2.2,<3
+numpy==2.4.6
+gymnasium==1.3.0
+mo-gymnasium[mujoco]==1.3.2
+mujoco==3.12.0
+morl-baselines @ git+https://github.com/LucasAlegre/morl-baselines.git@a8acdbba3e8a4738cd4f3e3cfe57d151e8583892
+
+pandapower==3.5.4
+pandas==2.3.3
+pyarrow==25.0.1
+PyYAML==6.0.3
+matpowercaseframes==1.1.6

@@ -1,0 +1,61 @@
+extends: paper_ieee33_v1.yaml
+environment_version: residential-grid-morl-v2.0.0-dev
+simulation:
+  power_flow_algorithm: bfsw
+  forecast_mode: noisy_short_horizon
+  forecast_noise_std_fraction: 0.10
+  include_spatial_net_power: true
+  include_ev_arrival_forecast: true
+network:
+  load_scale: 0.70
+  pv_scale: 1.00
+  ev_scale: 1.00
+  pv_capacity_ratio_to_base_load: 0.35
+bess:
+  buses: [18, 22, 25, 33]
+  capacity_kwh: 500.0
+  p_max_kw: 250.0
+  initial_soc_low: 0.20
+  initial_soc_high: 0.40
+  degradation_aud_per_kwh_throughput: 0.035
+  terminal_energy_valuation: true
+ev:
+  buses: [12, 18, 25, 30, 33]
+  # High-EV-adoption feeder: daytime sites have 40 ports and residential
+  # aggregations have 160, without inflating the physical 7 kW charger rating.
+  chargers_per_bus: {12: 40, 18: 160, 25: 40, 30: 40, 33: 160}
+  equivalent_vehicles_per_group: 1.0
+  v2g_enabled: false
+  energy_demand_scale: 1.15
+  schedule_mode: mixed_node_archetypes
+  node_archetypes:
+    12: work_flexible
+    18: residential
+    25: work_flexible
+    30: work_flexible
+    33: residential
+  schedule_archetypes:
+    work_flexible:
+      arrival_windows_local_hour: [[8.0, 9.0], [12.0, 13.5], [14.5, 17.0]]
+      dwell_hours: [1.0, 3.0]
+    residential:
+      arrival_windows_local_hour: [[17.0, 23.0]]
+      dwell_hours: [8.0, 12.0]
+  schedule_timing_biases: [uniform, high_price, high_load]
+  schedule_timing_regimes:
+    high_price_day: [0.10, 0.80, 0.10]
+    high_load_day: [0.10, 0.10, 0.80]
+  schedule_timing_regime_probabilities: [0.50, 0.50]
+  schedule_peak_top_fraction: 0.10
+  schedule_cohort_fraction: 0.70
+  schedule_cohort_jitter_steps: 1
+  rbc1_departure_time_noise_std_hours: 4.0
+reward:
+  voltage_worst_bus_weight: 0.75
+  ev_readiness_beta: 0.02
+  ev_departure_aggregation: fleet_mean
+randomization:
+  load_scale_noise: 0.05
+  pv_scale_noise: 0.08
+  spatial_load_scale_noise: 0.15
+  spatial_pv_scale_noise: 0.25
